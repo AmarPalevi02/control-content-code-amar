@@ -11,7 +11,7 @@ const Layouts = ({ children }: LayoutsProps) => {
          <Sidebar />
          <div className="mt-3 flex-1">
             <Breadcrumb />
-            <main className='py-5'>
+            <main className='py-5 pr-4'>
                {children}
             </main>
          </div>

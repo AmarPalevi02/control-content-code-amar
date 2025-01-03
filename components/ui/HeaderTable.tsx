@@ -6,10 +6,10 @@ type HeaderTableProps = {
 
 const HeaderTable: React.FC<HeaderTableProps> = ({ colums }) => {
    return (
-      <thead>
-         <tr>
+      <thead className=''>
+         <tr className='bg-[#DFDFDF]'>
             {colums.map((colum, i) => (
-               <th key={i} className='border border-gray-300 px-4 py-2 text-left'>
+               <th key={i} className={`border-none px-4 py-2 text-left text-theme-white ${i === 0 ? 'rounded-tl-md' : ''} ${i === colums.length - 1 ? 'rounded-tr-md' : ''}`}>
                   {colum}
                </th>
             ))}
