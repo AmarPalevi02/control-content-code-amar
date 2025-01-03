@@ -4,6 +4,7 @@ import { getDatas } from '../../utils/fetch'
 import React, { useEffect, useState } from 'react'
 import HeaderTable from '@/components/ui/HeaderTable'
 import RowTable from '@/components/ui/RowTable'
+import Title from '@/components/ui/Title'
 
 type Bio = {
   id: string,
@@ -34,7 +35,7 @@ const Bio = () => {
   console.log(bio)
   return (
     <div>
-      <h2 className='py-5'>Bio</h2>
+      <Title title='Bio' nextpage='/bio/create' />
       {isLoading ? (
         <p>Lodding...</p>
       ) : (

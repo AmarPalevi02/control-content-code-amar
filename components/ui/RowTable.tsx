@@ -16,7 +16,7 @@ const RowTable: React.FC<RowTableProps> = ({ data, onEdit, onDelete }) => {
                <span className="line-clamp-2">{item}</span>
             </td>
          ))}
-         <td className="border px-4 py-2 border-b-2 border-b-gray-300">
+         <td className=" px-4 py-2 border-b-2 border-b-gray-300">
             <div className="flex items-center justify-center h-full space-x-2">
                <button
                   className="text-blue-500 hover:underline bg-[#85AFEE] px-2 py-2 rounded-md"
