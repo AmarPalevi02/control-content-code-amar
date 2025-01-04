@@ -11,3 +11,12 @@ export const getDatas = async <T>(resourch: string): Promise<T> => {
    }
 }
 
+export const postData = async (resourch: string, payload: object) => {
+   try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_DB_HOST}/${process.env.NEXT_PUBLIC_APP_VERSION}/${resourch}`, payload)
+
+      return response
+   } catch (error) {
+      throw new Error(error instanceof Error ? error.message : "Failed to fetch data");
+   }
+}
