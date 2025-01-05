@@ -1,6 +1,6 @@
 'use client'
 
-import { getDatas } from '../../utils/fetch'
+import { deleteData, getDatas } from '../../utils/fetch'
 import React, { useEffect, useState } from 'react'
 import HeaderTable from '@/components/ui/HeaderTable'
 import RowTable from '@/components/ui/RowTable'
@@ -28,11 +28,18 @@ const Bio = () => {
     }
   }
 
+  const handleDeletBio = async (id: string) => {
+    try {
+      await deleteData('myjobs', id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     handleBio()
   }, [])
 
-  console.log(bio)
   return (
     <div>
       <Title title='Bio' nextpage='/bio/create' />
@@ -61,7 +68,7 @@ const Bio = () => {
                         </div>,
                       ]}
                       onEdit={() => alert(`Edit bio with id: ${item.id}`)}
-                      onDelete={() => alert(`Delete bio with id: ${item.id}`)}
+                      onDelete={() => handleDeletBio(item.id)}
                     />
                   )
                 })}

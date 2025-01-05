@@ -41,11 +41,10 @@ const Create = () => {
         city: form.city,
         jobs: form.jobs
       }
-      await postData('/myjobs', payload)
+      await postData('/myjobs', payload)   
     } catch (error) {
 
     }
-    console.log(form)
 
   };
 
