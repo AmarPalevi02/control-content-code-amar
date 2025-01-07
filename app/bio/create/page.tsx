@@ -94,6 +94,7 @@ const Create = () => {
         <Button
           type='submit'
           className="px-5 py-2 bg-green-500"
+          variant='secondary'
         >
           {isLoading ? <p>Loading..</p> : <p>Submit</p>}
         </Button>
