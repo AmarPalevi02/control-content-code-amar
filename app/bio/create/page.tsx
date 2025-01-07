@@ -89,7 +89,13 @@ const Create = () => {
               />
             </div>
           ))}
-          <button type="button" onClick={handleAddJobs}>Add Job</button>
+          <Button
+            type='button'
+            onClick={handleAddJobs}
+            variant='primary'
+          >
+            Add Jobs
+          </Button>
         </div>
         <Button
           type='submit'
