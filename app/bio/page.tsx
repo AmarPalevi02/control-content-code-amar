@@ -44,6 +44,7 @@ const Bio = () => {
   return (
     <div>
       <Title title='Bio' nextpage='/bio/create' />
+      {bio.length === 0 && <p>Data is Not Found</p>}
       {isLoading ? (
         <p>Lodding...</p>
       ) : (

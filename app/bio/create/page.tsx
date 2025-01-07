@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button'
 import FormInput from '@/components/ui/FormInput'
 import { postData } from '@/utils/fetch'
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Create = () => {
   const [form, setForm] = useState<{
@@ -16,6 +17,7 @@ const Create = () => {
     jobs: []
   })
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const route = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -33,7 +35,6 @@ const Create = () => {
 
   const handleSubmit = async () => {
     if (!form.about || !form.city || form.jobs.length === 0) {
-      console.log('All fields are required!');
       return;
     }
 
@@ -46,10 +47,10 @@ const Create = () => {
       }
       await postData('/myjobs', payload)
       setIsLoading(false)
+      route.back()
     } catch (error) {
-
+      console.log(error)
     }
-
   };
 
   return (
@@ -92,7 +93,6 @@ const Create = () => {
         </div>
         <Button
           type='submit'
-          // onClick={handleSubmit}
           className="px-5 py-2 bg-green-500"
         >
           {isLoading ? <p>Loading..</p> : <p>Submit</p>}
