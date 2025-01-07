@@ -1,5 +1,6 @@
 'use client'
 
+import Button from '@/components/ui/Button'
 import FormInput from '@/components/ui/FormInput'
 import { postData } from '@/utils/fetch'
 import React, { useState } from 'react'
@@ -14,6 +15,7 @@ const Create = () => {
     city: '',
     jobs: []
   })
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -36,12 +38,14 @@ const Create = () => {
     }
 
     try {
+      setIsLoading(true)
       const payload = {
         about: form.about,
         city: form.city,
         jobs: form.jobs
       }
-      await postData('/myjobs', payload)   
+      await postData('/myjobs', payload)
+      setIsLoading(false)
     } catch (error) {
 
     }
@@ -86,9 +90,13 @@ const Create = () => {
           ))}
           <button type="button" onClick={handleAddJobs}>Add Job</button>
         </div>
-        <button type='submit' onClick={handleSubmit}>
-          Submit
-        </button>
+        <Button
+          type='submit'
+          // onClick={handleSubmit}
+          className="px-5 py-2 bg-green-500"
+        >
+          {isLoading ? <p>Loading..</p> : <p>Submit</p>}
+        </Button>
       </form>
     </div>
   )

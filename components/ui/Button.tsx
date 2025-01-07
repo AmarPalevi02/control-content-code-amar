@@ -2,19 +2,27 @@ import React from 'react'
 
 type ButtonPros = {
    children: React.ReactNode,
-   onClick: () => void,
+   onClick?: () => void,
    loading?: boolean,
    disable?: boolean,
-   type: 'button' | 'submit'
+   type: 'button' | 'submit',
+   className?: string
 }
 
-const Button = ({ children, onClick, loading = false, disable = false, type }: ButtonPros) => {
+const Button = ({
+   children,
+   onClick,
+   loading = false,
+   disable = false,
+   type,
+   className
+}: ButtonPros) => {
    return (
       <button
          type={type}
          onClick={onClick}
          disabled={disable}
-         className=''
+         className={className}
       >
          {loading ? 'Loading...' : children}
       </button>

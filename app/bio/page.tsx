@@ -31,6 +31,7 @@ const Bio = () => {
   const handleDeletBio = async (id: string) => {
     try {
       await deleteData('myjobs', id)
+      setbio((prevBio) => prevBio.filter((item) => item.id !== id))
     } catch (error) {
       console.log(error)
     }
